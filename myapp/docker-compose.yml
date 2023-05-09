@@ -1,0 +1,56 @@
+version: '3'
+services:
+  mydb:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser # Add this line
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mydb
+    environment:
+      MYSQL_USERNAME: myuser
+      MYSQL_PASSWORD: mypassword
+      MYSQL_HOST: mydb
+
+
+
+# version: '3'
+# services:
+#   mydb:
+#     image: mysql:8.0
+#     environment:
+#       MYSQL_USER: myuser
+#       MYSQL_PASSWORD: mypassword
+#       MYSQL_DATABASE: myapp_development
+#       MYSQL_ROOT_PASSWORD: rootpassword # ルートパスワードを追加してください
+#     ports:
+#       - "3306:3306"
+#     volumes:
+#       - ./tmp/db:/var/lib/mysql
+
+#   web:
+#     build: .
+#     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+#     environment:
+#       MYSQL_USERNAME: myuser
+#       MYSQL_PASSWORD: mypassword
+#       MYSQL_HOST: mydb
+#     volumes:
+#       - .:/myapp
+#     ports:
+#       - "3000:3000"
+#     depends_on:
+#       - mydb
