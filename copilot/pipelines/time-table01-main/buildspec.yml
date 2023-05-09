@@ -15,6 +15,9 @@ phases:
       - chmod +x ./copilot-linux
       ### Change directory to myapp
       - cd $CODEBUILD_SRC_DIR/myapp
+      ### Added: Install specified Ruby version
+      - rbenv install -s
+      - rbenv rehash
       ### Added: Install bundler and RuboCop dependencies
       - gem install bundler
       - bundle install
