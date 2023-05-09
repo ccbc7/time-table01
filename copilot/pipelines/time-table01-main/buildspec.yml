@@ -28,7 +28,7 @@ phases:
       # - make test
       ### Added: Run RuboCop
       - echo "Running RuboCop"
-      - bundle exec rubocop -C
+      - bundle exec rubocop -c
       - bundle exec rubocop
   post_build:
     commands:
