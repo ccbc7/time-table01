@@ -21,6 +21,7 @@ phases:
       ### Added: Install bundler and RuboCop dependencies
       - gem install bundler
       - bundle install
+      - bundle exec rubocop --version
   build:
     commands:
       - echo "Run your tests"
