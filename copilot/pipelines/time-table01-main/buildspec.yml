@@ -13,10 +13,16 @@ phases:
       - wget -q https://ecs-cli-v2-release.s3.amazonaws.com/copilot-linux-v1.27.0
       - mv ./copilot-linux-v1.27.0 ./copilot-linux
       - chmod +x ./copilot-linux
+      ### Added: Install bundler and RuboCop dependencies
+      - gem install bundler
+      - bundle install
   build:
     commands:
       - echo "Run your tests"
       # - make test
+      ### Added: Run RuboCop
+      - echo "Running RuboCop"
+      - bundle exec rubocop
   post_build:
     commands:
       - ls -l

@@ -1,5 +1,4 @@
 <h2>メモアプリ</h2>
-
 <%= form_with model: @memo, local: true do |form| %>
   <div>
     <%= form.text_field :title, placeholder: "Write title here..."  %>
@@ -12,7 +11,6 @@
     <%= form.submit "Save Memo" %>
   </div>
 <% end %>
-
 <h2>My Memos</h2>
 <table>
   <tr>

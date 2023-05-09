@@ -1,34 +1,3 @@
-# default: &default
-#   adapter: mysql2
-#   encoding: utf8mb4
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: root
-#   password:
-#   socket: /tmp/mysql.sock
-
-# development:
-#   <<: *default
-#   database: myapp_development
-#   host: mydb
-#   username: root
-#   password: password
-
-# test:
-#   <<: *default
-#   database: myapp_test
-#   host: mydb
-#   username: root
-#   password: password
-
-# production:
-#   <<: *default
-#   database: myapp_production
-#   username: myapp_mysql
-#   password: <%= ENV["NO_CHANGE_MYSQL_DATABASE_PASSWORD"] %>
-
-
-
-
 default: &default
   adapter: mysql2
   encoding: utf8mb4
@@ -41,7 +10,7 @@ default: &default
 development:
   <<: *default
   database: myapp_development
-  
+
 test:
   <<: *default
   database: myapp_test
