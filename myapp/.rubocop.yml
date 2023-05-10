@@ -1,6 +1,3 @@
-inherit_from:
-  - .rubocop_airbnb.yml
-
 AllCops:
   NewCops: enable
   Exclude:
@@ -18,4 +15,10 @@ AllCops:
     - 'config/**/*'
 
 Layout/LineLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
