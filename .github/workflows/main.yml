@@ -1,5 +1,10 @@
 name: Run rspec, rubocop
 
+  uses: ruby/setup-ruby@v1
+  with:
+    ruby-version: 3.1.2
+    bundler-cache: true
+
 on:
   push:
   pull_request:
