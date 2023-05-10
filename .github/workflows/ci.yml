@@ -27,6 +27,10 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
 
+      - name: Bundle install
+        run: bundle install
+        working-directory: ./myapp
+
       - name: Yarn install
         run: yarn install --check-files
         working-directory: ./myapp
@@ -55,7 +59,10 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
 
+      - name: Bundle install
+        run: bundle install
+        working-directory: ./myapp
+
       - name: Run rubocop
         run: bundle exec rubocop
         working-directory: ./myapp
-
