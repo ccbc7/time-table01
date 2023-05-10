@@ -20,7 +20,7 @@ phases:
       - pwd
       - echo "Running Rubocop..."
       # Specify the relative path to the config file for Rubocop
-      - cd ../../myapp
+      - cd myapp
       - rubocop
       - echo "Run your tests"
       # - make test
