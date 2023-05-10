@@ -27,25 +27,20 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
 
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Yarn install
         run: yarn install --check-files
+        working-directory: ./myapp
 
       - name: Database create and migrate
         run: |
           cp config/database.yml.ci config/database.yml
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
+        working-directory: ./myapp
 
       - name: Run rspec
         run: bundle exec rspec
+        working-directory: ./myapp
 
   rubocop:
     runs-on: ubuntu-latest
@@ -62,3 +57,5 @@ jobs:
 
       - name: Run rubocop
         run: bundle exec rubocop
+        working-directory: ./myapp
+
