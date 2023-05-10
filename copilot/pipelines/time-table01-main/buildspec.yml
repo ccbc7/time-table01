@@ -13,30 +13,16 @@ phases:
       - wget -q https://ecs-cli-v2-release.s3.amazonaws.com/copilot-linux-v1.27.0
       - mv ./copilot-linux-v1.27.0 ./copilot-linux
       - chmod +x ./copilot-linux
-      ### Change directory to myapp
-      - cd $CODEBUILD_SRC_DIR/myapp
-      ### Added: Install specified Ruby version
-      - rbenv install -s
-      - rbenv rehash
-      ### Added: Install bundler and RuboCop dependencies
-      - gem install bundler
-      - bundle install
-      - bundle exec rubocop --version
   build:
     commands:
       - echo "Run your tests"
       # - make test
-      ### Added: Run RuboCop
-      - echo "Running RuboCop"
-      - bundle exec rubocop -c
-      - bundle exec rubocop
   post_build:
     commands:
       - ls -l
       - export COLOR="false"
       - pipeline=$(cat $CODEBUILD_SRC_DIR/copilot/pipelines/time-table01-main/manifest.yml | ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))')
       - pl_envs=$(echo $pipeline | jq -r '.stages[].name')
-      - cd $CODEBUILD_SRC_DIR # Add this line to change back to the correct directory
       # Find all the local services in the workspace.
       - svc_ls_result=$(./copilot-linux svc ls --local --json)
       - svc_list=$(echo $svc_ls_result | jq '.services')
