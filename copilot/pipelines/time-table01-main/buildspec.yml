@@ -17,7 +17,7 @@ phases:
       - gem install rubocop rubocop-airbnb
   build:
     commands:
-      - echo pwd
+      - pwd
       - echo "Running Rubocop..."
       # Specify the relative path to the config file for Rubocop
       - cd ../../myapp
