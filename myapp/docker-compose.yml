@@ -3,9 +3,9 @@ services:
   mydb:
     image: mysql:8.0
     environment:
+      MYSQL_USER: myuser
       MYSQL_ROOT_PASSWORD: mypassword
       MYSQL_DATABASE: mydb
-      MYSQL_USER: myuser # Add this line
     ports:
       - "3306:3306"
     volumes:
