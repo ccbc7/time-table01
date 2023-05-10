@@ -13,8 +13,13 @@ phases:
       - wget -q https://ecs-cli-v2-release.s3.amazonaws.com/copilot-linux-v1.27.0
       - mv ./copilot-linux-v1.27.0 ./copilot-linux
       - chmod +x ./copilot-linux
+      # Install Rubocop and rubocop-airbnb
+      - gem install rubocop rubocop-airbnb
   build:
     commands:
+      - echo "Running Rubocop..."
+      # Specify the relative path to the config file for Rubocop
+      - rubocop --config ../../myapp/rubocop-airbnb.yml
       - echo "Run your tests"
       # - make test
   post_build:
