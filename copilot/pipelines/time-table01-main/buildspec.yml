@@ -19,7 +19,8 @@ phases:
     commands:
       - echo "Running Rubocop..."
       # Specify the relative path to the config file for Rubocop
-      - rubocop --config ../../myapp/rubocop-airbnb.yml
+      - cd ../../myapp
+      - rubocop
       - echo "Run your tests"
       # - make test
   post_build:
