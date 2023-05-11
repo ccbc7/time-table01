@@ -81,7 +81,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-1 # 適切なリージョンに置き換えてください
+          aws-region: ap-northeast-1 
 
       - name: Install AWS Copilot
         run: |
@@ -91,4 +91,3 @@ jobs:
 
       - name: Deploy to ECS
         run: copilot svc deploy --name my-service --env test
-        # servicenameとenvironmentnameは適切なものに置き換えてください
