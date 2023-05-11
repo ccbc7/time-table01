@@ -1,22 +1,20 @@
-inherit_gem:
-  rubocop-airbnb:
-    - config/default.yml
-
 AllCops:
-  DisplayCopNames: true
-  Exclude:
-    - "Gemfile"
-    - "bin/**/*"
-    - "db/**/*"
-    - "log/**/*"
-    - "tmp/**/*"
-    - "vendor/**/*"
-    - "config/environments/*"
-    - "config/puma.rb"
   NewCops: enable
-  TargetRubyVersion: 3.1
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+    - 'test/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
